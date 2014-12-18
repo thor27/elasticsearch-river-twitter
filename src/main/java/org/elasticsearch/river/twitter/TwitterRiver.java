@@ -471,8 +471,8 @@ public class TwitterRiver extends AbstractRiverComponent implements River {
 
                     // If we want to index tweets as is, we don't need to convert it to JSon doc
                     if (raw) {
+                        String rawJSON = "";
                         try {
-                            String rawJSON = "";
                             rawJSON = DataObjectFactory.getRawJSON(status);
                             bulkProcessor.add(Requests.indexRequest(indexName).type(typeName).id(Long.toString(status.getId())).create(true).source(rawJSON));
                         } catch (Exception e) {
